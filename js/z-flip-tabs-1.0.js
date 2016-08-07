@@ -1,7 +1,7 @@
 $(document).ready(function(){
     //延时展示导航栏
     $('.navTab').each(function(index){
-      $(this).css({'transition-delay':((index*0.4)+'s')});
+      $(this).css({'transition-delay':((index*0.2)+'s')});
     });
 
     $('.tabs>*').each(function(index){
@@ -44,7 +44,7 @@ jQuery.fn.zFlipTabs = function(){
     $('nav.main>.navTab').eq($eq).addClass('active');
     document.querySelectorAll('nav.main>.tab.active')[0].scrollIntoView();
 
-  },1000);
+  },900);
 
             //700ms after click
             //显示tab里面的内容
@@ -52,7 +52,7 @@ jQuery.fn.zFlipTabs = function(){
             //Animate corresponding section content to life
             $('.content>section').removeClass('active');
             $('.content>section').eq($eq).addClass('active');
-          },1000);
+          },1200);
     });
 
     //“关闭”按钮功能
