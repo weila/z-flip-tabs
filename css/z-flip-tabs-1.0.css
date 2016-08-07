@@ -150,15 +150,22 @@ body{
   -webkit-transform:none;
 }
 /*------nav 导航 css------*/
-.navInactive
+nav>.navTab
 {
-  transform: translateY(-50px);
-  -webkit-transform: translateY(-50px);
+  opacity:0;
+  transition:all 0.5s;
+  transform:translateY(-100px);
+  -webkit-transform:translateY(-100px);
+}
+nav.navNotActive>.navTab
+{
+  opacity:1;
+  transform:none;
+  -webkit-transform:none;
 }
 .navTab
 {
   position: fixed;
-  transform-origin:50% 0% 0px;
   background: #fff;
   box-sizing:border-box;
   /* border-top:5px solid; */
@@ -174,7 +181,6 @@ body{
   position:relative;
   cursor:pointer;
   overflow:hidden;
-  transition:transform 0.5s cubic-bezier(0,0,0,1);
   z-index:+5000;
 }
 /*--导航下拉--*/

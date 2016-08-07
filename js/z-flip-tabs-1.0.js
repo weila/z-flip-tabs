@@ -1,7 +1,7 @@
 $(document).ready(function(){
     //延时展示导航栏
     $('.navTab').each(function(index){
-      $(this).css({'transition-delay':((index*0.1)+'s')});
+      $(this).css({'transition-delay':((index*0.4)+'s')});
     });
 
     $('.tabs>*').each(function(index){
@@ -36,7 +36,8 @@ jQuery.fn.zFlipTabs = function(){
   setTimeout(function(){
 
     //Show menu
-    $('nav.main').removeClass('navInactive');
+    //$('nav.main').removeClass('navInactive');
+    $('nav.main').addClass('navNotActive');
 
     //Activate tab on menu
     $('nav.main>.navTab').removeClass('active');
@@ -56,7 +57,8 @@ jQuery.fn.zFlipTabs = function(){
 
     //“关闭”按钮功能
     $('.close').click(function(){
-        $('nav.main').addClass('navInactive');
+        //$('nav.main').addClass('navInactive');
+        $('nav.main').removeClass('navNotActive');
         $('.content>section').removeClass('active');
         $('.flipOpen').addClass('bgFadeIn');
         var $eq=$('nav.main>.navTab').index($('nav.main>.active'));
@@ -73,7 +75,6 @@ jQuery.fn.zFlipTabs = function(){
         $('.flipOpen').addClass('inactive');
         setTimeout(function(){
             $('.flipOpen').remove();
-            $('nav').removeClass('navInactive');
         },500);
     });
 }
