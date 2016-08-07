@@ -1,0 +1,246 @@
+body{
+    margin: 0;
+    border: 0;
+}
+.minimize
+{
+  transform:scale(0);
+  -webkit-transform:scale(0);
+}
+/*--------------------animation start--------------------*/
+.flipOpen{
+  position: absolute;
+  background-color: #333;
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  animation:flipOpen 0.8s 0s 1 cubic-bezier(0,0,0.3,0.7);/*--翻转动画--*/
+  -webkit-animation:flipOpen 0.8s 0s 1 cubic-bezier(0,0,0.3,0.7);/*--safari翻转动画--*/
+  /*--翻转动画在IE上表现为旋转--*/
+  overflow: visible !important;/*--消除jQuery默认生成一个overflow：hidden--*/
+  pointer-events: none;/*--消除Transform 引起的 z-index "失效"--*/
+}
+.flipOpen::after {
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  box-shadow:20px 15px 40px rgba(90,90,90,0.5);/*--safari不支持伪元素动画，有空做一个阴影的动画--*/
+      -webkit-animation-name: opacityOut; /*动画名称*/
+      -webkit-animation-duration: 1s; /*动画持续时间*/
+      -webkit-animation-iteration-count: 1; /*动画次数*/
+      -webkit-animation-delay: 0s; /*延迟时间*/
+}
+.inactive
+{
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    animation:flipClose 1s 0s 1 cubic-bezier(0,0,0,1);/*--翻转动画--*/
+    -webkit-animation:flipClose 1s 0s 1 cubic-bezier(0,0,0,1);/*--safari翻转动画--*/
+}
+/*--------------------animation end--------------------*/
+
+/*--------------------css3翻转动画--------------------*/
+@keyframes flipOpen
+{
+    0%{
+        transform: rotateY(0deg);
+        -webkit-transform: rotateY(0deg);
+    }
+    100%{
+        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+    }
+}
+@-webkit-keyframes flipOpen
+{
+    0%{
+        transform: rotateY(0deg);
+        -webkit-transform: rotateY(0deg);
+    }
+    100%{
+        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+    }
+}
+@keyframes flipClose
+{
+  from{
+    transform:translate(0,0);
+    -webkit-transform:translate(0,0);
+  }
+}
+@-webkit-keyframes flipClose
+{
+  from{
+    transform:translate(0,0);
+    -webkit-transform:translate(0,0);
+  }
+}
+/*--------------------css3阴影变化动画--------------------*/
+@keyframes opacityOut
+{
+      0% {
+      opacity: 1; /*初始状态 透明度为0*/
+      }
+      100% {
+      opacity: 0.5; /*结尾状态 透明度为0.5*/
+      }
+}
+@-webkit-keyframes opacityOut
+{
+      0% {
+      opacity: 1; /*初始状态 透明度为1*/
+      }
+      100% {
+      opacity: 0.5; /*结尾状态 透明度为0.5*/
+      }
+}
+
+/*-----------css3：拷贝tab中的元素消失动画，留下纯黑色背景及元素恢复动画------------*/
+.bgFadeOut>*{
+    -webkit-animation-name: fadeout; /*动画名称*/
+    -webkit-animation-duration: 0.5s; /*动画持续时间*/
+    -webkit-animation-iteration-count: 1; /*动画次数*/
+    -webkit-animation-delay: 0s; /*延迟时间*/
+    opacity:0;
+}
+@-webkit-keyframes fadeout
+{
+    0% {
+        opacity: 1; /*初始状态 透明度为1*/
+    }
+    100% {
+        opacity: 0; /*结尾状态 透明度为0*/
+    }
+}
+.bgFadeIn>*{
+    -webkit-animation-name: fadein; /*动画名称*/
+    -webkit-animation-duration: 0.4s; /*动画持续时间*/
+    -webkit-animation-iteration-count: 1; /*动画次数*/
+    -webkit-animation-delay: 0.2s; /*延迟时间*/
+    opacity:0;
+}
+@-webkit-keyframes fadein
+{
+    0% {
+        opacity: 0; /*初始状态 透明度为1*/
+    }
+    100% {
+        opacity: 1; /*结尾状态 透明度为0*/
+    }
+}
+/*----显示tab内容----*/
+.content>section{
+  color:#aaa;
+  position:absolute;
+  top: 100px;
+  left: 5%;
+  opacity: 0;
+  transition:all 0.5s;
+  -webkit-transition:all 0.5s;
+  transform:translateY(-100px);
+  -webkit-transform:translateY(-100px);
+}
+.content>section.active
+{
+  opacity:1;
+  transform:none;
+  -webkit-transform:none;
+}
+/*------nav 导航 css------*/
+.navInactive
+{
+  transform: translateY(-50px);
+  -webkit-transform: translateY(-50px);
+}
+.navTab
+{
+  position: fixed;
+  transform-origin:50% 0% 0px;
+  background: #fff;
+  box-sizing:border-box;
+  /* border-top:5px solid; */
+  font-weight:600;
+  font-size:0.9em;
+  color:#161725;
+  display:inline-block;
+  width: 50%;
+  text-align:center;
+  line-height:45px;
+  height:100%;
+  border-top:rgba(0,0,0,0.5) 5px solid;
+  position:relative;
+  cursor:pointer;
+  overflow:hidden;
+  transition:transform 0.5s cubic-bezier(0,0,0,1);
+  z-index:+5000;
+}
+/*--导航下拉--*/
+nav.main>.navTab.active
+{
+  z-index:+5000;
+}
+nav.main>.navTab.active>span
+{
+  background:#d5d5d5;
+}
+nav.main>.navTab>span
+{
+  width:100%;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+  height:100%;
+  display:block;
+  transform:line-height 0.2s;
+  -webkit-transform:line-height 0.2s;
+}
+nav.main>.navTab:not(.active)>span:hover
+{
+  background:#dadada;
+}
+nav.main>.navTab:after
+{
+  content:"";
+  top:0;
+  right:0;
+  position:absolute;
+  border-top:0px solid transparent;
+  border-bottom:50px solid transparent;
+  border-right:0px solid rgba(0,0,0,0.05);
+  transition:all 0.2s;
+}
+nav.main>.navTab:hover:after
+{
+  content:"";
+  right:0;
+  position:absolute;
+  border-top:0px solid transparent;
+  border-bottom:55px solid transparent;
+  border-right:10px solid rgba(0,0,0,0.1);
+}
+
+/*------关闭按钮-------*/
+.content_wrapper.inactive>.close
+{
+  opacity:0;
+}
+
+.close{
+  position:fixed;
+  z-index: 500;
+  transition:opacity 0.2s 1s;
+  padding:20px;
+  color:white;
+  font-size:1.2em;
+  background:none;
+  border:none;
+  top:60px;
+  right:0;
+  cursor: pointer;
+  display: block;
+}
+/*End of Section*/
