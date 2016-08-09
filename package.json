@@ -1,0 +1,22 @@
+{
+  "name": "z-flip-tabs",
+  "version": "1.0.0",
+  "description": "A tab component of Z-Frame.",
+  "main": "index.js",
+  "scripts": {
+    "test": "tZFlipTabsGulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weila/z-flip-tabs.git"
+  },
+  "keywords": [
+    "z-flip-tabs"
+  ],
+  "author": "Weila",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/weila/z-flip-tabs/issues"
+  },
+  "homepage": "https://github.com/weila/z-flip-tabs#readme"
+}

@@ -217,6 +217,7 @@ nav.main>.navTab:after
   border-top:0px solid transparent;
   border-bottom:50px solid transparent;
   border-right:0px solid rgba(0,0,0,0.05);
+  -webkit-transition: all 0.2s;
   transition:all 0.2s;
 }
 nav.main>.navTab:active:after
@@ -238,6 +239,7 @@ nav.main>.navTab:active:after
 .close{
   position:fixed;
   z-index: 500;
+  -webkit-transition: opacity 0.2s 1s;
   transition:opacity 0.2s 1s;
   padding:20px;
   color:white;

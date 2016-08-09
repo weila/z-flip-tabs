@@ -1,18 +1,19 @@
-$(document).ready(function(){
-    //延时展示导航栏
-    $('.navTab').each(function(index){
-      $(this).css({'transition-delay':((index*0.2)+'s')});
+jQuery.fn.zFlipTabs = function(){
+    $(document).ready(function(){
+        //延时展示导航栏
+        $('.navTab').each(function(index){
+          $(this).css({'transition-delay':((index*0.2)+'s')});
+        });
+
+        $('.tabs>*').each(function(index){
+          $(this).css({'transition-delay':((index*0.05)+'s')});
+        });
+        $('.minimize').removeClass('minimize');//初始状态为最小化，移除最小化将tab菜单显示出来
     });
 
-    $('.tabs>*').each(function(index){
-      $(this).css({'transition-delay':((index*0.05)+'s')});
-    });
-    $('.minimize').removeClass('minimize');//初始状态为最小化，移除最小化将tab菜单显示出来
-});
-jQuery.fn.zFlipTabs = function(){
     //tab点击显示内容
     $(this).click(function(){
-        var $eq=$(this).index()-1;//为什么需要减掉1？
+        var $eq=$(this).index()-1;//疑问：为什么需要减掉1？
         var $copyTabs=$(this).clone();
         var className = $(this).attr("class");
         $copyTabs.addClass("flipOpen");
@@ -31,7 +32,7 @@ jQuery.fn.zFlipTabs = function(){
             left: '0',
             width:'100%',
             height:'100%',
-        },800);
+        },600);
 
   setTimeout(function(){
 
@@ -42,9 +43,8 @@ jQuery.fn.zFlipTabs = function(){
     //Activate tab on menu
     $('nav.main>.navTab').removeClass('active');
     $('nav.main>.navTab').eq($eq).addClass('active');
-    document.querySelectorAll('nav.main>.tab.active')[0].scrollIntoView();
 
-  },900);
+  },1200);
 
             //700ms after click
             //显示tab里面的内容
@@ -52,7 +52,7 @@ jQuery.fn.zFlipTabs = function(){
             //Animate corresponding section content to life
             $('.content>section').removeClass('active');
             $('.content>section').eq($eq).addClass('active');
-          },1200);
+          },600);
     });
 
     //“关闭”按钮功能
@@ -78,3 +78,33 @@ jQuery.fn.zFlipTabs = function(){
         },500);
     });
 }
+
+$('.navTab').click(function(e){
+    var $eq=$(this).index();
+    var $ripple=$("<div/>");
+    $ripple.addClass('ripple');
+    $ripple.css({left:e.clientX,top:e.clientY});
+    $(this).append($ripple);
+    setTimeout(function(){
+    $ripple.remove();
+    },1000);
+    var $megaRipple=$("<div/>");
+    $megaRipple.addClass('ripple');
+    $megaRipple.addClass('mega');
+    $megaRipple.css({
+                  left:e.clientX,
+                  top:e.clientY,
+                  background:$(this).css('border-color')
+                  });
+    $('.content').append($megaRipple);
+    setTimeout(function(){
+    $megaRipple.animate({opacity:0},1000);
+    setTimeout(function(){
+      $megaRipple.remove();
+    },1000);
+    },500);
+    $('nav.main').find('.active').removeClass('active');
+    $(this).addClass('active');
+    $('.content>section').removeClass('active');
+    $('.content>section').eq($eq).addClass('active');
+});
