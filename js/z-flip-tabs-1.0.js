@@ -15,10 +15,12 @@ jQuery.fn.zFlipTabs = function(){
     $(this).click(function(){
         var $eq=$(this).index()-1;//疑问：为什么需要减掉1？
         var $copyTabs=$(this).clone();
+        var $active=$('.tabs').eq($eq);
         var className = $(this).attr("class");
         $copyTabs.addClass("flipOpen");
         $copyTabs.removeClass(className);//消除原有元素css对clone元素的影响；
         $('.content').prepend($copyTabs);
+        $(this).css("opacity","0");
         //设置延时将复制的副本消失
         setTimeout(function(){
             $copyTabs.addClass('bgFadeOut');
@@ -27,6 +29,8 @@ jQuery.fn.zFlipTabs = function(){
         $copyTabs.css({
             top:$(this).offset().top - $(window).scrollTop(), //让翻转位从元素位置开始
             left:$(this).offset().left - $(window).scrollLeft(), //让翻转位从元素位置开始
+            width: $active.width(),
+            height: $active.height(),
             }).show().animate({
             top: '0',
             left: '0',
@@ -51,7 +55,7 @@ jQuery.fn.zFlipTabs = function(){
           setTimeout(function(){
             //Animate corresponding section content to life
             $('.content>section').removeClass('active');
-            $('.content>section').eq($eq).addClass('active');
+            $('.content> :target').addClass('active');
           },600);
     });
 
@@ -75,6 +79,9 @@ jQuery.fn.zFlipTabs = function(){
         $('.flipOpen').addClass('inactive');
         setTimeout(function(){
             $('.flipOpen').remove();
+        },500);
+        setTimeout(function(){
+            $('.tabs').css("opacity","1");
         },500);
     });
 }
