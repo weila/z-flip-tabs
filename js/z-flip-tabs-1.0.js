@@ -2,18 +2,21 @@ jQuery.fn.zFlipTabs = function(){
     $(document).ready(function(){
         //延时展示导航栏
         $('.navTab').each(function(index){
-          $(this).css({'transition-delay':((index*0.2)+'s')});
+          $(this).css({'transition-delay':((index*0.1)+'s')});
         });
 
         $('.tabs>*').each(function(index){
           $(this).css({'transition-delay':((index*0.05)+'s')});
         });
         $('.minimize').removeClass('minimize');//初始状态为最小化，移除最小化将tab菜单显示出来
+        var navTabQty = $('.navTab').length;
+        var navTabWidth = Math.floor((100/navTabQty)*100)/100;//先乘以100向下取整，再除以100使得导航的宽度向下保留两位小数，不进行四舍五入；
+        $('.navTab').css({width: navTabWidth + "%"});
     });
 
     //tab点击显示内容
     $(this).click(function(){
-        var $eq=$(this).index()-1;//疑问：为什么需要减掉1？
+        var $eq=$(this).index();
         var $copyTabs=$(this).clone();
         var $active=$('.tabs').eq($eq);
         var className = $(this).attr("class");
@@ -47,8 +50,8 @@ jQuery.fn.zFlipTabs = function(){
     //Activate tab on menu
     $('nav.main>.navTab').removeClass('active');
     $('nav.main>.navTab').eq($eq).addClass('active');
-
-  },1200);
+    $('.close').css('display','block');
+  },800);
 
             //700ms after click
             //显示tab里面的内容
@@ -56,7 +59,7 @@ jQuery.fn.zFlipTabs = function(){
             //Animate corresponding section content to life
             $('.content>section').removeClass('active');
             $('.content> :target').addClass('active');
-          },600);
+          },700);
     });
 
     //“关闭”按钮功能
@@ -76,13 +79,14 @@ jQuery.fn.zFlipTabs = function(){
             width: $active.width(),
             height: $active.height(),
         },600);
+        $('.close').css('display','none');
         $('.flipOpen').addClass('inactive');
         setTimeout(function(){
             $('.flipOpen').remove();
-        },500);
+        },600);
         setTimeout(function(){
             $('.tabs').css("opacity","1");
-        },500);
+        },300);
     });
 }
 

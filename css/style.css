@@ -1,21 +1,73 @@
 .tabwrap{
     position: relative;
+    width: 680px;
+    margin: auto;
+    padding-top: 60px;
 }
-
-.johnson{
+.tabs-close-button{
+    width: 100%;
+    height: 100%;
+}
+/***DEMO1 CSS***/
+body{
+    background: #666;
+}
+.demo1-tab1{
+    background: url('../images/demo1/animat-campfire-color.gif');
+}
+.demo1-tab2{
+    background: url('../images/demo1/animat-day-night-color.gif');
+}
+.demo1-tab3{
+    background: url('../images/demo1/animat-pencil-color.gif');
+}
+.demo1-tab4{
+    background: url('../images/demo1/animat-road-trip-color.gif');
+}
+.demo1-tab5{
+    background: url('../images/demo1/animat-rocket-color.gif');
+}
+.demo1-tab6{
+    background: url('../images/demo1/animat-diamond-color.gif');
+}
+/*针对Safari对Gif图片渲染不流畅Hacker*/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    ::i-block-chrome, .demo1-tab1 {
+        background: url('../images/demo1/animat-campfire-color.png');
+    }
+    ::i-block-chrome, .demo1-tab2 {
+        background: url('../images/demo1/animat-day-night-color.png');
+    }
+    ::i-block-chrome, .demo1-tab3 {
+        background: url('../images/demo1/animat-pencil-color.png');
+    }
+    ::i-block-chrome, .demo1-tab4 {
+        background: url('../images/demo1/animat-road-trip-color.png');
+    }
+    ::i-block-chrome, .demo1-tab5 {
+        background: url('../images/demo1/animat-rocket-color.png');
+    }
+    ::i-block-chrome, .demo1-tab6 {
+        background: url('../images/demo1/animat-diamond-color.png');
+    }
+}
+/*针对Safari对Gif图片渲染不流畅Hacker*/
+.demo1-tab{
     position: relative;
     width: 100%;
     height: 100%;
-    background-image: url("../images/background01.jpg");
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    display: inline-block;
 }
+
 .tabs{
     position: relative;
-    width: 500px;
+    width: 200px;
     height: 200px;
     display: inline-block;
     margin-left: 20px;
-    top: 300px;
+    margin-top: 20px;
     box-shadow:20px 15px 40px rgba(90,90,90,0.5);
 }
