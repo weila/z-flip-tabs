@@ -4,28 +4,42 @@
     <meta charset="UTF-8">
     <title>Flip Tabs Demo2</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/z-flip-tabs-1.0.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/z-flip-tabs-1.0.css">
+    <link rel="stylesheet" href="../css/style.css">
   </head>
 
-  <body>
+  <body class="demo2-body">
     <nav class='main hList'>
-      <div class="navTab active"><span>haha</span></div><!--
-    --><div class="navTab"><span>hehe</span></div>
+      <div class="navTab active"><span>Drinks</span></div><!--
+    --><div class="navTab"><span>Foods</span></div><!--
+    --><div class="navTab"><span>Desserts</span></div>
     </nav>
-    <div class="tabs">
-      <div class="johnson minimize">11</div>
-    </div>
-    <div class="tabs">
-      <div class="johnson minimize">22</div>
-    </div>
+    <p class="demo-note">Demo2: 菜单/menus</p>
+      <div class="demo2-tabWrap">
+        <a class="demo2-tabs tabs" href="#tab-content1">
+          <div class="demo-tab demo2-tab1 minimize"></div>
+        </a>
+        <a class="demo2-tabs tabs" href="#tab-content2">
+          <div class="demo-tab demo2-tab2 minimize"></div>
+        </a>
+        <a class="demo2-tabs tabs" href="#tab-content3">
+          <div class="demo-tab demo2-tab3 minimize"></div>
+        </a>
+      </div>
     <div class="content">
-      <section>哈哈</br>hahahahaah</br>hahahahaah</section>
-      <section>呵呵</br>hahahahaah</br>hahahahaah</br>hahahahaah</section>
+      <section class="demo-section" id="tab-content1">
+        <img src="../images/demo2/cafe-menu.jpg" alt="" class="demo2-image">
+      </section>
+      <section class="demo-section" id="tab-content2">
+        <img src="../images/demo2/mexican-menu.jpg" alt="" class="demo2-image">
+      </section>
+      <section class="demo-section" id="tab-content3">
+        <img src="../images/demo2/restaurant-menu.jpg" alt="" class="demo2-image">
+      </section>
     </div>
-    <a class="close" href="javascript: void(0)">关闭</a>
-    <script src='js/jquery-3.0.0.min.js'></script>
-    <script src="js/z-flip-tabs-1.0.js"></script>
+    <a class="close" href="javascript: void(0)"><img class="tabs-close-button" src="../images/close-button.png" alt=""></a>
+    <script src='../js/jquery-3.0.0.min.js'></script>
+    <script src="../js/z-flip-tabs-1.0.js"></script>
     <script>
       $(document).ready(function(){
         $(".tabs").zFlipTabs();

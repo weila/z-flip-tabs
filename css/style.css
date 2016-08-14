@@ -1,16 +1,30 @@
-.tabwrap{
+.tabs-close-button{
+    width: 100%;
+    height: 100%;
+}
+.demo-note{
+    text-align: center;
+    font-size: 18px;
+    color: #999;
+}
+/***DEMO1 CSS***/
+.demo1-body{
+    background: #666;
+}
+.demo1-tabWrap{
     position: relative;
     width: 680px;
     margin: auto;
     padding-top: 60px;
 }
-.tabs-close-button{
-    width: 100%;
-    height: 100%;
-}
-/***DEMO1 CSS***/
-body{
-    background: #666;
+.demo1-tabs{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    margin-left: 20px;
+    margin-top: 20px;
+    box-shadow:20px 15px 40px rgba(90,90,90,0.5);
 }
 .demo1-tab1{
     background: url('../images/demo1/animat-campfire-color.gif');
@@ -29,6 +43,38 @@ body{
 }
 .demo1-tab6{
     background: url('../images/demo1/animat-diamond-color.gif');
+}
+/***DEMO2 CSS***/
+.demo2-body{
+    background: #eee;
+}
+.demo2-tabWrap{
+    position: relative;
+    width: 780px;
+    margin: auto;
+    padding-top: 30px;
+}
+.demo2-tabs{
+    position: relative;
+    width: 233px;
+    height: 400px;
+    display: inline-block;
+    margin-left: 20px;
+    margin-top: 20px;
+    box-shadow:20px 15px 40px rgba(90,90,90,0.5);
+}
+.demo2-tab1{
+    background: url('../images/demo2/menu-card-1.jpg');
+}
+.demo2-tab2{
+    background: url('../images/demo2/menu-card-2.jpg');
+}
+.demo2-tab3{
+    background: url('../images/demo2/menu-card-3.jpg');
+}
+.demo2-image{
+    width: auto;
+    height: 100%;
 }
 /*针对Safari对Gif图片渲染不流畅Hacker*/
 @media screen and (-webkit-min-device-pixel-ratio:0) {
@@ -52,7 +98,7 @@ body{
     }
 }
 /*针对Safari对Gif图片渲染不流畅Hacker*/
-.demo1-tab{
+.demo-tab{
     position: relative;
     width: 100%;
     height: 100%;
@@ -61,13 +107,9 @@ body{
     background-size: cover;
     display: inline-block;
 }
-
-.tabs{
-    position: relative;
-    width: 200px;
-    height: 200px;
-    display: inline-block;
-    margin-left: 20px;
-    margin-top: 20px;
-    box-shadow:20px 15px 40px rgba(90,90,90,0.5);
+.demo-section{
+    width: 100%;
+    height: 500px;
+    text-align: center;
+    display: block;
 }
